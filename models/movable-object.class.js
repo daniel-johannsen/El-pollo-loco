@@ -6,6 +6,8 @@ class MovableObject {
     width = 120;
     imageCache = {};
     imageCacheCicken = {};
+    currentImage = 0;
+    speed = 0.15;
 
     loadImage(path) {
         this.img = new Image(); // this.img = document.getElementById(..) <img id=".." src="..">
@@ -21,20 +23,14 @@ class MovableObject {
 
     }
 
-    loadImagesForChicken(arr) {
-        arr.forEach((path) => {
-            let img = new Image();
-            img.src = path;
-            this.imageCacheCicken[path] = img;
-        });
-
-    }
-
     moneRight() {
         console.log('move right');
     }
 
     moveLeft() {
 
+        setInterval(() => {
+            this.x -= this.speed;
+        }, 1000 / 60);
     }
 }
