@@ -8,6 +8,8 @@ class MovableObject {
     imageCacheCicken = {};
     currentImage = 0;
     speed = 0.15;
+    speedCharacter = 0.3;
+    world;
 
     loadImage(path) {
         this.img = new Image(); // this.img = document.getElementById(..) <img id=".." src="..">
@@ -23,8 +25,8 @@ class MovableObject {
 
     }
 
-    moneRight() {
-        console.log('move right');
+    moveRight() {
+
     }
 
     moveLeft() {
