@@ -9,7 +9,7 @@ class MovableObject {
     currentImage = 0;
     speed = 0.15;
     speedCharacter = 0.3;
-    world;
+    otherDirection = false;
 
     loadImage(path) {
         this.img = new Image(); // this.img = document.getElementById(..) <img id=".." src="..">
