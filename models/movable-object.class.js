@@ -1,12 +1,4 @@
-class MovableObject {
-    x = 120;
-    y = 80;
-    img;
-    height = 250;
-    width = 120;
-    imageCache = {};
-    imageCacheCicken = {};
-    currentImage = 0;
+class MovableObject extends DrawableObject {
     speed = 0.15;
     speedCharacter = 0.3;
     otherDirection = false;
@@ -18,17 +10,6 @@ class MovableObject {
     draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
-
-    drawFrame(ctx) {
-        if (this instanceof Character || this instanceof Chicken) {
-            ctx.beginPath();
-            ctx.lineWidth = '3';
-            ctx.strokeStyle = 'blue';
-            ctx.rect(this.x, this.y, this.width, this.height);
-            ctx.stroke();
-        }
-    }
-
 
     isColliding(mo) {
         return this.x + this.width > mo.x &&
@@ -49,7 +30,7 @@ class MovableObject {
     isHurt() {
         let timePassed = new Date().getTime() - this.lastHit;
         timePassed = timePassed / 1000;
-        return timePassed < 1.5;
+        return timePassed < 1;
     }
 
     isDead() {
@@ -80,7 +61,6 @@ class MovableObject {
             img.src = path;
             this.imageCache[path] = img;
         });
-
     }
 
     playAnimation(images) {
