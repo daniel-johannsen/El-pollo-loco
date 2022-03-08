@@ -6,7 +6,7 @@ class Cloud extends MovableObject {
 
     constructor() {
         super().loadImage('img/5.Fondo/Capas/4.nubes/1.png');
-        this.x = Math.random() * 500; //Number between 200 and 700
+        this.x = Math.random() * 500;
         this.animate();
     }
 
