@@ -9,6 +9,7 @@ class World {
     statusbarBottles = new StatusbarBottles();
     statusbarCoins = new StatusbarCoins();
     throwableObjects = [];
+    bottle = new Bottle();
 
     constructor(canvas) {
         this.ctx = canvas.getContext('2d');
@@ -25,19 +26,47 @@ class World {
 
     run() {
         setInterval(() => {
-            this.checkcollisions();
+            this.checkcollisionsWithEnemy();
             this.checkTrowableObjects();
+            this.checkCollisionWithBottle();
+            this.checkCollisionWithCoin();
         }, 200);
     }
 
     checkTrowableObjects() {
         if (this.keyboard.D) {
-            let bottle = new ThrowableObject(this.character.x + this.character.width, this.character.y + this.character.height / 2);
-            this.throwableObjects.push(bottle);
+            if (this.statusbarBottles.amount > 0) {
+                this.statusbarBottles.amount--;
+                let bottle = new ThrowableObject(this.character.x + this.character.width, this.character.y + this.character.height / 2);
+                this.throwableObjects.push(bottle);
+                this.statusbarBottles.setAmount();
+            }
         }
     }
 
-    checkcollisions() {
+    checkCollisionWithBottle() {
+        this.level.bottles.forEach((bottle) => {
+            if (this.character.isColliding(bottle)) {
+                this.statusbarBottles.amount++;
+                this.statusbarBottles.setAmount();
+                this.level.bottles.splice(this.level.bottles.indexOf(bottle), 1);
+                console.log('Collision with ', bottle);
+            }
+        });
+    }
+
+    checkCollisionWithCoin() {
+        this.level.coins.forEach((coin) => {
+            if (this.character.isColliding(coin)) {
+                this.statusbarCoins.amount++;
+                this.statusbarCoins.setAmount();
+                this.level.coins.splice(this.level.coins.indexOf(coin), 1);
+                console.log('Collision with ', coin);
+            }
+        });
+    }
+
+    checkcollisionsWithEnemy() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
                 this.character.hit();
