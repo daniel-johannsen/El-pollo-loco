@@ -38,15 +38,26 @@ class World {
             this.checkTrowableObjects();
             this.checkCollisionWithBottle();
             this.checkCollisionWithCoin();
-            //this.checkCollisionBottleAndEnemy();
+            this.checkCollisionBottleAndEndboss();
         }, 200);
+        setInterval(() => {
+            this.checkCollisionBottleAndEndboss();
+        }, 2800)
     }
 
 
     /**
      * This function is used to check if the bttle hits an enemy.
      */
-    checkCollisionBottleAndEnemy() {}
+    checkCollisionBottleAndEndboss() {
+        this.throwableObjects.forEach((bottle) => {
+            this.level.endboss.forEach((endboss) => {
+                if (endboss.isColliding(bottle)) {
+                    console.log('Enemy hit!');
+                }
+            });
+        });
+    }
 
 
     /**
@@ -102,7 +113,12 @@ class World {
             if (this.character.isColliding(enemy)) {
                 this.character.hit();
                 this.statusbarEnergy.setPercentage(this.character.energy);
-                console.log('Collision with ', enemy, this.character.energy);
+            }
+        });
+        this.level.endboss.forEach((endboss) => {
+            if (this.character.isColliding(endboss)) {
+                this.character.hit();
+                this.statusbarEnergy.setPercentage(this.character.energy);
             }
         });
     }
@@ -125,6 +141,7 @@ class World {
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.level.bottles);
         this.addObjectsToMap(this.level.coins);
+        this.addObjectsToMap(this.level.endboss);
         this.addObjectsToMap(this.throwableObjects);
         this.ctx.translate(-this.camera_X, 0);
 
