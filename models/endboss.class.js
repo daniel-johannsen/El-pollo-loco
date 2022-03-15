@@ -3,6 +3,7 @@ class Endboss extends MovableObject {
     height = 450;
     width = 400;
     y = 10;
+    energy = 100;
 
     IMAGES_WALKING = [
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/1.Alerta/G5.png',
@@ -23,6 +24,10 @@ class Endboss extends MovableObject {
         this.animate();
     }
 
+
+    /**
+     * This function is used to animate the movement of the endboss.
+     */
     animate() {
         setInterval(() => {
             this.playAnimation(this.IMAGES_WALKING);

@@ -9,6 +9,10 @@ class ThrowableObject extends MovableObject {
         this.throw();
     }
 
+
+    /**
+     * This function is used to throw a bottle.
+     */
     throw () {
         this.speedY = 30;
         this.applyGravity();

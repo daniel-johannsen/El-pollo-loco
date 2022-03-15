@@ -20,19 +20,38 @@ class World {
         this.run();
     }
 
+
+    /**
+     * This function is used to hand over the worlt object to the character.
+     */
     setWorld() {
         this.character.world = this;
     }
 
+
+    /**
+     * This function is used to run the checks every 200ms.
+     */
     run() {
         setInterval(() => {
             this.checkcollisionsWithEnemy();
             this.checkTrowableObjects();
             this.checkCollisionWithBottle();
             this.checkCollisionWithCoin();
+            //this.checkCollisionBottleAndEnemy();
         }, 200);
     }
 
+
+    /**
+     * This function is used to check if the bttle hits an enemy.
+     */
+    checkCollisionBottleAndEnemy() {}
+
+
+    /**
+     * This function is used to throw a bottle, if the character has one.
+     */
     checkTrowableObjects() {
         if (this.keyboard.D) {
             if (this.statusbarBottles.amount > 0) {
@@ -44,6 +63,10 @@ class World {
         }
     }
 
+
+    /**
+     * This function is used to check if the charackter colides with a bottle and add it to the bottle statusbar.
+     */
     checkCollisionWithBottle() {
         this.level.bottles.forEach((bottle) => {
             if (this.character.isColliding(bottle)) {
@@ -55,6 +78,10 @@ class World {
         });
     }
 
+
+    /**
+     * This function is used to check if the charackter colides with a coin and add it to the coin statusbar.
+     */
     checkCollisionWithCoin() {
         this.level.coins.forEach((coin) => {
             if (this.character.isColliding(coin)) {
@@ -66,6 +93,10 @@ class World {
         });
     }
 
+
+    /**
+     * This function is used to check if the charackter colides with an anemy and lower his energy and animate the hit.
+     */
     checkcollisionsWithEnemy() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
@@ -76,6 +107,10 @@ class World {
         });
     }
 
+
+    /**
+     * This function is used to draw the images on the canvas.
+     */
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_X, 0);
@@ -99,12 +134,20 @@ class World {
         });
     }
 
+
+    /**
+     * This function is used to add the objects to the canvas.
+     */
     addObjectsToMap(objects) {
         objects.forEach(o => {
             this.addToMap(o);
         });
     }
 
+
+    /**
+     * This function is used to add images to the canvas.
+     */
     addToMap(mo) {
         if (mo.otherDirection) {
             this.flipImage(mo);
@@ -117,6 +160,10 @@ class World {
         }
     }
 
+
+    /**
+     * This function is used to flip the image of the character, if it moves baxk.
+     */
     flipImage(mo) {
         this.ctx.save();
         this.ctx.translate(mo.width, 0);
@@ -124,6 +171,10 @@ class World {
         mo.x = mo.x * -1;
     }
 
+
+    /**
+     * This function is used to flip the image of the character back to the start direction.
+     */
     flipImageBack(mo) {
         mo.x = mo.x * -1;
         this.ctx.restore();

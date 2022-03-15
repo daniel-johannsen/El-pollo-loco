@@ -53,8 +53,11 @@ class Character extends MovableObject {
         this.animate();
     }
 
-    animate() {
 
+    /**
+     * This function is used to
+     */
+    animate() {
         setInterval(() => {
             this.walkingSound.pause();
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
@@ -90,6 +93,10 @@ class Character extends MovableObject {
         }, 110);
     }
 
+
+    /**
+     * This function is used to let the character jump.
+     */
     jump() {
         this.speedY = 30;
     }

@@ -24,13 +24,20 @@ class StatusbarBottles extends DrawableObject {
     }
 
 
+
+    /**
+     * This function is used to set the amount of the bottle statusbar.
+     */
     setAmount() {
         let path = this.IMAGES[this.resolveImageIndex()];
         this.img = this.imageCache[path];
     }
 
-    resolveImageIndex() {
 
+    /**
+     * This function is used to return the correct mumber of the image for the current amount.
+     */
+    resolveImageIndex() {
         if (this.amount == 0) {
             return 0;
         } else if (this.amount == 1) {

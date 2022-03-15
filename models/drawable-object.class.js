@@ -8,12 +8,18 @@ class DrawableObject {
     width = 120;
 
 
-
+    /**
+     * This function is used to
+     */
     loadImage(path) {
         this.img = new Image(); // this.img = document.getElementById(..) <img id=".." src="..">
         this.img.src = path;
     }
 
+
+    /**
+     * This function is used to
+     */
     loadImages(arr) {
         arr.forEach((path) => {
             let img = new Image();
@@ -22,10 +28,18 @@ class DrawableObject {
         });
     }
 
+
+    /**
+     * This function is used to draw the images.
+     */
     draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 
+
+    /**
+     * This function is used to draw a frame around the objects.
+     */
     drawFrame(ctx) {
         if (this instanceof Character || this instanceof Chicken) {
             ctx.beginPath();

@@ -24,14 +24,21 @@ class StatusbarEnergy extends DrawableObject {
 
     }
 
+
+    /**
+     * This function is used to set the percentage of the character energy.
+     */
     setPercentage(percentage) {
         this.percentage = percentage;
         let path = this.IMAGES[this.resolveImageIndex()];
         this.img = this.imageCache[path];
     }
 
-    resolveImageIndex() {
 
+    /**
+     * This function is used to return the correct mumber of the image for the current amount.
+     */
+    resolveImageIndex() {
         if (this.percentage == 100) {
             return 5;
         } else if (this.percentage > 80) {
