@@ -34,12 +34,16 @@ class World {
      */
     run() {
         setInterval(() => {
-            this.checkcollisionsWithEnemy();
-            this.checkTrowableObjects();
+            this.checkJumpOnChicken();
+        }, 50)
+        setInterval(() => {
+            this.checkCollisionsWithEnemy();
+            this.checkCollisionsWithEndboss();
             this.checkCollisionWithBottle();
             this.checkCollisionWithCoin();
             this.checkCollisionBottleAndEndboss();
-        }, 200);
+            this.checkTrowableObjects();
+        }, 150);
         setInterval(() => {
             this.checkCollisionBottleAndEndboss();
         }, 2800)
@@ -108,13 +112,36 @@ class World {
     /**
      * This function is used to check if the charackter colides with an anemy and lower his energy and animate the hit.
      */
-    checkcollisionsWithEnemy() {
+    checkCollisionsWithEnemy() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
                 this.character.hit();
                 this.statusbarEnergy.setPercentage(this.character.energy);
             }
         });
+    }
+
+
+    /**
+     * This function is used to check if the charackter is jumping on a chicken and kill the chicken.
+     */
+    checkJumpOnChicken() {
+        this.level.enemies.forEach((enemy) => {
+            if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
+                console.log('chicken dead, ', enemy.energy);
+                enemy.hitChicken();
+                setTimeout(() => {
+                    this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
+                }, 4000);
+            }
+        });
+    }
+
+
+    /**
+     * This function is used to check if the charackter colides with the endboss and lower his energy and animate the hit.
+     */
+    checkCollisionsWithEndboss() {
         this.level.endboss.forEach((endboss) => {
             if (this.character.isColliding(endboss)) {
                 this.character.hit();
