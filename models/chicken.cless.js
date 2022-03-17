@@ -11,8 +11,6 @@ class Chicken extends MovableObject {
     ];
 
     IMAGES_DEAD = [
-        'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/4.G_muerte.png',
-        'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/4.G_muerte.png',
         'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/4.G_muerte.png'
     ];
 
@@ -26,6 +24,9 @@ class Chicken extends MovableObject {
     }
 
 
+    /**
+     * This function is used to lower thee chicken energy, if it is hurt
+     */
     hitChicken() {
         this.energy -= 100;
         if (this.energy < 0) {
@@ -39,9 +40,11 @@ class Chicken extends MovableObject {
      * This function is used to animate the movement of the chickens.
      */
     animate() {
-        setInterval(() => {
-            this.moveLeft();
-        }, 1000 / 60);
+        if (!this.isDead()) {
+            setInterval(() => {
+                this.moveLeft();
+            }, 1000 / 60);
+        }
 
         setInterval(() => {
             if (this.isDead()) {
