@@ -58,6 +58,7 @@ class World {
             this.level.endboss.forEach((endboss) => {
                 if (endboss.isColliding(bottle)) {
                     console.log('Enemy hit!');
+                    endboss.endbossHurt();
                 }
             });
         });
