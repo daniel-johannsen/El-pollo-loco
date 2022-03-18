@@ -42,11 +42,11 @@ class Chicken extends MovableObject {
      * This function is used to animate the movement of the chickens.
      */
     animate() {
-        if (!this.isDead()) {
-            setInterval(() => {
+        setInterval(() => {
+            if (!this.isDead()) {
                 this.moveLeft();
-            }, 1000 / 60);
-        }
+            }
+        }, 1000 / 60);
 
         setInterval(() => {
             if (this.isDead()) {
