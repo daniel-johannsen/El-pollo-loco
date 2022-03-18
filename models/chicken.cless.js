@@ -3,6 +3,7 @@ class Chicken extends MovableObject {
     height = 60;
     y = 365;
     energy = 100;
+    chickenDead = false;
 
     IMAGES_WALKING = [
         'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/1.Ga_paso_derecho.png',
@@ -25,14 +26,15 @@ class Chicken extends MovableObject {
 
 
     /**
-     * This function is used to lower thee chicken energy, if it is hurt
+     * This function is used to lower the chicken energy, if it is hurt
      */
     hitChicken() {
+        this.chickenDead = true;
         this.energy -= 100;
         if (this.energy < 0) {
             this.energy = 0;
         }
-        clearInterval(this.moveLeft());
+        clearInterval(this.moveLeft);
     }
 
 

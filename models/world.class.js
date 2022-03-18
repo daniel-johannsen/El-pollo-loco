@@ -34,10 +34,10 @@ class World {
      */
     run() {
         setInterval(() => {
-            this.checkJumpOnChicken();
+            this.checkCollisionsWithEnemy();
+            this.checkCollisionBottleAndEnemy();
         }, 50)
         setInterval(() => {
-            this.checkCollisionsWithEnemy();
             this.checkCollisionsWithEndboss();
             this.checkCollisionWithBottle();
             this.checkCollisionWithCoin();
@@ -51,7 +51,7 @@ class World {
 
 
     /**
-     * This function is used to check if the bttle hits an enemy.
+     * This function is used to check if the bttle hits the endboss.
      */
     checkCollisionBottleAndEndboss() {
         this.throwableObjects.forEach((bottle) => {
@@ -59,6 +59,24 @@ class World {
                 if (endboss.isColliding(bottle)) {
                     console.log('Enemy hit!');
                     endboss.endbossHurt();
+                }
+            });
+        });
+    }
+
+
+    /**
+     * This function is used to check if the bttle hits an enemy.
+     */
+    checkCollisionBottleAndEnemy() {
+        this.throwableObjects.forEach((bottle) => {
+            this.level.enemies.forEach((enemy) => {
+                if (enemy.isColliding(bottle)) {
+                    console.log('chicken dead, ', enemy.energy);
+                    enemy.hitChicken();
+                    setTimeout(() => {
+                        this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
+                    }, 4000);
                 }
             });
         });
@@ -75,6 +93,7 @@ class World {
                 let bottle = new ThrowableObject(this.character.x + this.character.width, this.character.y + this.character.height / 2);
                 this.throwableObjects.push(bottle);
                 this.statusbarBottles.setAmount();
+                this.checkCollisionBottleAndEnemy();
             }
         }
     }
@@ -115,25 +134,13 @@ class World {
      */
     checkCollisionsWithEnemy() {
         this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy)) {
+            if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
+                console.log('chicken dead');
+                enemy.hitChicken();
+            }
+            if (this.character.isColliding(enemy) && enemy.chickenDead == false) {
                 this.character.hit();
                 this.statusbarEnergy.setPercentage(this.character.energy);
-            }
-        });
-    }
-
-
-    /**
-     * This function is used to check if the charackter is jumping on a chicken and kill the chicken.
-     */
-    checkJumpOnChicken() {
-        this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
-                console.log('chicken dead, ', enemy.energy);
-                enemy.hitChicken();
-                setTimeout(() => {
-                    this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
-                }, 4000);
             }
         });
     }
