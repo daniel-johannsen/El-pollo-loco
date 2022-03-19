@@ -5,7 +5,14 @@ let keyboard = new Keyboard();
 function init() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
+    start();
 
+}
+
+function start() {
+    document.getElementById('startScreen').classList.add('d-none');
+    document.getElementById('btn').classList.add('d-none');
+    document.getElementById('canvas').classList.remove('d-none');
 }
 
 window.addEventListener("keydown", (e) => {

@@ -74,9 +74,6 @@ class World {
                 if (enemy.isColliding(bottle)) {
                     console.log('chicken dead, ', enemy.energy);
                     enemy.hitChicken();
-                    setTimeout(() => {
-                        this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
-                    }, 4000);
                 }
             });
         });

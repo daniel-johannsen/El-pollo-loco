@@ -55,6 +55,14 @@ class Endboss extends MovableObject {
     }
 
 
+    showEndScreen() {
+        setTimeout(() => {
+            document.getElementById('canvas').classList.add('d-none');
+            document.getElementById('endScreen').classList.remove('d-none');
+        }, 1000);
+    }
+
+
     /**
      * This function is used to animate the movement of the endboss.
      */
@@ -62,6 +70,11 @@ class Endboss extends MovableObject {
         setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
+                setTimeout(() => {
+                    document.getElementById('canvas').classList.add('d-none');
+                    document.getElementById('startScreen').classList.add('d-none');
+                    document.getElementById('endScreen').classList.remove('d-none');
+                }, 1000);
             } else if (this.isHit == false) {
                 this.playAnimation(this.IMAGES_WALKING);
             } else {

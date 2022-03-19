@@ -27,11 +27,25 @@
     <title>Document</title>
 </head>
 
-<body onload="init()">
+<body>
 
-    <h1>El pollo loco</h1>
 
-    <canvas width="720" height="480" id="canvas"></canvas>
+    <div id="startScreen" class="start_end_screen">
+        <img src="img/9.Intro _ Outro Image/Start Screen/Opción2.png" class="start_end_screen">
+        <button id="btn" class="btn" onclick="init()">START</button>
+    </div>
+    <canvas class="d-none" width="720" height="480" id="canvas">
+    </canvas>
+    <div id="endScreen" class="start_end_screen d-none">
+        <img src="img/5.Fondo/1.png" class="start_end_screen img_1">
+        <img src="img/9.Intro _ Outro Image/_Game over_ screen/4.Game over!.png" class="start_end_screen img_2">
+        <a href="index.html" class="btn">RESTART</a>
+    </div>
+    <div id="youLostScreen" class="start_end_screen d-none">
+        <img src="img/5.Fondo/1.png" class="start_end_screen img_1">
+        <img src="img/9.Intro _ Outro Image/_Game over_ screen/2.oh no you lost!.png" class="start_end_screen img_2">
+        <a href="index.html" class="btn">RESTART</a>
+    </div>
 
 </body>
 

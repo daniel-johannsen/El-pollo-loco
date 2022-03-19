@@ -80,6 +80,11 @@ class Character extends MovableObject {
 
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
+                setTimeout(() => {
+                    document.getElementById('canvas').classList.add('d-none');
+                    document.getElementById('startScreen').classList.add('d-none');
+                    document.getElementById('youLostScreen').classList.remove('d-none');
+                }, 1000);
             } else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURTING);
             } else if (this.isAboveGround()) {
