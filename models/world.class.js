@@ -10,6 +10,10 @@ class World {
     statusbarCoins = new StatusbarCoins();
     throwableObjects = [];
     bottle = new Bottle();
+    bottleSound = new Audio('audio/bottle.mp3');
+    hitChickenSound = new Audio('audio/chicken.mp3');
+    hitEndbossSound = new Audio('audio/endboss_hit.mp3');
+    coinSound = new Audio('audio/coin.mp3');
 
     constructor(canvas) {
         this.ctx = canvas.getContext('2d');
@@ -59,6 +63,12 @@ class World {
                 if (endboss.isColliding(bottle)) {
                     console.log('Enemy hit!');
                     endboss.endbossHurt();
+                    this.hitEndbossSound.play()
+                }
+                if (endboss.isDead()) {
+                    setTimeout(() => {
+                        this.level.endboss.splice(this.level.endboss.indexOf(endboss), 1);
+                    }, 943);
                 }
             });
         });
@@ -74,6 +84,7 @@ class World {
                 if (enemy.isColliding(bottle)) {
                     console.log('chicken dead, ', enemy.energy);
                     enemy.hitChicken();
+                    this.hitChickenSound.play();
                 }
             });
         });
@@ -106,6 +117,7 @@ class World {
                 this.statusbarBottles.setAmount();
                 this.level.bottles.splice(this.level.bottles.indexOf(bottle), 1);
                 console.log('Collision with ', bottle);
+                this.bottleSound.play();
             }
         });
     }
@@ -121,6 +133,7 @@ class World {
                 this.statusbarCoins.setAmount();
                 this.level.coins.splice(this.level.coins.indexOf(coin), 1);
                 console.log('Collision with ', coin);
+                this.coinSound.play();
             }
         });
     }
@@ -134,6 +147,7 @@ class World {
             if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
                 console.log('chicken dead');
                 enemy.hitChicken();
+                this.hitChickenSound.play();
             }
             if (this.character.isColliding(enemy) && enemy.chickenDead == false) {
                 this.character.hit();

@@ -41,6 +41,8 @@ class Character extends MovableObject {
     world;
     speed = 4.5;
     walkingSound = new Audio('audio/pepe_runing.mp3');
+    hitSound = new Audio('audio/hit.mp3');
+    jumpSound = new Audio('audio/jump.mp3');
 
 
     constructor() {
@@ -84,12 +86,13 @@ class Character extends MovableObject {
                     document.getElementById('canvas').classList.add('d-none');
                     document.getElementById('startScreen').classList.add('d-none');
                     document.getElementById('youLostScreen').classList.remove('d-none');
-                }, 1000);
+                }, 800);
             } else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURTING);
+                this.hitSound.play();
             } else if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_JUMPING);
-
+                this.jumpSound.play();
             } else {
                 if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
                     this.playAnimation(this.IMAGES_WALKING);
