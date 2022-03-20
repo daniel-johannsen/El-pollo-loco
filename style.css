@@ -143,4 +143,7 @@ a {
     .restart_mobile {
         left: 38%;
     }
+    .btn {
+        height: unset;
+    }
 }
