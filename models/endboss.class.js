@@ -55,6 +55,9 @@ class Endboss extends MovableObject {
     }
 
 
+    /**
+     * This function is used to show the endscreen, if the endboss is dead and the player wins.
+     */
     showEndScreen() {
         setTimeout(() => {
             document.getElementById('canvas').classList.add('d-none');

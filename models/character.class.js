@@ -57,7 +57,7 @@ class Character extends MovableObject {
 
 
     /**
-     * This function is used to
+     * This function is used to animate the images of the character.
      */
     animate() {
         setInterval(() => {

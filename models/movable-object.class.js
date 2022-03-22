@@ -9,7 +9,7 @@ class MovableObject extends DrawableObject {
 
 
     /**
-     * This function is used to
+     * This function is used to draw the images on the canvas
      */
     draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
@@ -17,7 +17,7 @@ class MovableObject extends DrawableObject {
 
 
     /**
-     * This function is used to
+     * This function is used to return, that a movable object is colliding to others or not.
      */
     isColliding(mo) {
         return this.x + this.width > mo.x &&
@@ -28,7 +28,7 @@ class MovableObject extends DrawableObject {
 
 
     /**
-     * This function is used to
+     * This function is used to lower the energy, if the character is hit.
      */
     hit() {
         this.energy -= 1;
@@ -41,7 +41,7 @@ class MovableObject extends DrawableObject {
 
 
     /**
-     * This function is used to
+     * This function is used to return, that the character is hurt or not.
      */
     isHurt() {
         let timePassed = new Date().getTime() - this.lastHit;
@@ -51,7 +51,7 @@ class MovableObject extends DrawableObject {
 
 
     /**
-     * This function is used to
+     * This function is used to return, that the character or enemy is dead or not.
      */
     isDead() {
         return this.energy == 0;
@@ -59,7 +59,7 @@ class MovableObject extends DrawableObject {
 
 
     /**
-     * This function is used to
+     * This function is used to apllay gravity to object.
      */
     applyGravity() {
         setInterval(() => {
@@ -72,7 +72,7 @@ class MovableObject extends DrawableObject {
 
 
     /**
-     * This function is used to
+     * This function is used to return, that a object is above a special hight (y) or not. 
      */
     isAboveGround() {
         if (this instanceof ThrowableObject) { // ThrowableObject should always fall.
@@ -84,7 +84,7 @@ class MovableObject extends DrawableObject {
 
 
     /**
-     * This function is used to
+     * This function is used to load a single image.
      */
     loadImage(path) {
         this.img = new Image(); // this.img = document.getElementById(..) <img id=".." src="..">
@@ -93,7 +93,7 @@ class MovableObject extends DrawableObject {
 
 
     /**
-     * This function is used to
+     * This function is used to load an array of images.
      */
     loadImages(arr) {
         arr.forEach((path) => {
@@ -105,7 +105,7 @@ class MovableObject extends DrawableObject {
 
 
     /**
-     * This function is used to
+     * This function is used to play a animation of images in a intervall.
      */
     playAnimation(images) {
         let i = this.currentImage % images.length;

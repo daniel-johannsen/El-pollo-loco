@@ -16,7 +16,7 @@ class Chick extends MovableObject {
     ];
 
     constructor() {
-        super().loadImage('');
+        super().loadImage('./img/3.Secuencias_Enemy_básico/Versión_pollito/1.Paso_derecho.png');
         this.x = 400 + Math.random() * 2000;
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_DEAD);
