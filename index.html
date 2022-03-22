@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/1.Ga_paso_derecho.png">
+    <link rel="icon" type="image/x-icon" href="./img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/1.Ga_paso_derecho.png">
     <script src="models/drawable-object.class.js"></script>
     <script src="models/movable-object.class.js"></script>
     <script src="models/character.class.js"></script>
@@ -44,8 +44,8 @@
                         <p> D: throw bottle</p>
                         <br>
                         <h4>Mobile</h4>
-                        <p> J: jump</p>
-                        <p> T: throw bottle</p>
+                        <p> <img src="./img/jump.png">: jump</p>
+                        <p> <img src="./img/throw.png">: throw bottle</p>
             </div>
         </div>
         <button id="music1" class="btn" onclick="music1()">MUSIC</button>
@@ -58,22 +58,22 @@
     </canvas>
 
     <div id="left" class="mobile_controlls d-none" ontouchstart="touchDownLeft()" ontouchend="touchUpLeft()">
-        < </div>
-            <div id="right" class="mobile_controlls d-none" ontouchstart="touchDownRight()" ontouchend="touchUpRight()"> > </div>
-            <div id="jump" class="mobile_controlls d-none" ontouchstart="touchDownJump()" ontouchend="touchUpJump()"> J </div>
-            <div id="throw" class="mobile_controlls d-none" ontouchstart="touchDownThrow()" ontouchend="touchUpThrow()"> T </div>
+        <img src="./img/arrow_left.png"> </div>
+    <div id="right" class="mobile_controlls d-none" ontouchstart="touchDownRight()" ontouchend="touchUpRight()"> <img src="./img/arrow_right.png"> </div>
+    <div id="jump" class="mobile_controlls d-none" ontouchstart="touchDownJump()" ontouchend="touchUpJump()"> <img src="./img/jump.png"> </div>
+    <div id="throw" class="mobile_controlls d-none" ontouchstart="touchDownThrow()" ontouchend="touchUpThrow()"> <img src="./img/throw.png"> </div>
 
-            <div id="endScreen" class="start_end_screen d-none">
-                <img src="img/5.Fondo/1.png" class="start_end_screen img_1">
-                <img src="img/9.Intro _ Outro Image/_Game over_ screen/4.Game over!.png" class="start_end_screen img_2">
-                <a href="index.html" class="btn restart_mobile">RESTART</a>
-            </div>
+    <div id="endScreen" class="start_end_screen d-none">
+        <img src="img/5.Fondo/1.png" class="start_end_screen img_1">
+        <img src="img/9.Intro _ Outro Image/_Game over_ screen/4.Game over!.png" class="start_end_screen img_2">
+        <a href="index.html" class="btn restart_mobile">RESTART</a>
+    </div>
 
-            <div id="youLostScreen" class="start_end_screen d-none">
-                <img src="img/5.Fondo/1.png" class="start_end_screen img_1">
-                <img src="img/9.Intro _ Outro Image/_Game over_ screen/2.oh no you lost!.png" class="start_end_screen img_2">
-                <a href="index.html" class="btn restart_mobile">RESTART</a>
-            </div>
+    <div id="youLostScreen" class="start_end_screen d-none">
+        <img src="img/5.Fondo/1.png" class="start_end_screen img_1">
+        <img src="img/9.Intro _ Outro Image/_Game over_ screen/2.oh no you lost!.png" class="start_end_screen img_2">
+        <a href="index.html" class="btn restart_mobile">RESTART</a>
+    </div>
 
 </body>
 

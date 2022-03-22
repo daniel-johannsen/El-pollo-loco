@@ -1,11 +1,11 @@
 class StatusbarCoins extends DrawableObject {
     IMAGES = [
-        'img/7.Marcadores/Barra/Marcador moneda/azul/0_.png',
-        'img/7.Marcadores/Barra/Marcador moneda/azul/20_.png',
-        'img/7.Marcadores/Barra/Marcador moneda/azul/40_.png',
-        'img/7.Marcadores/Barra/Marcador moneda/azul/60_.png',
-        'img/7.Marcadores/Barra/Marcador moneda/azul/80_.png',
-        'img/7.Marcadores/Barra/Marcador moneda/azul/100_.png'
+        './img/7.Marcadores/Barra/Marcador moneda/azul/0_.png',
+        './img/7.Marcadores/Barra/Marcador moneda/azul/20_.png',
+        './img/7.Marcadores/Barra/Marcador moneda/azul/40_.png',
+        './img/7.Marcadores/Barra/Marcador moneda/azul/60_.png',
+        './img/7.Marcadores/Barra/Marcador moneda/azul/80_.png',
+        './img/7.Marcadores/Barra/Marcador moneda/azul/100_.png'
     ];
 
 

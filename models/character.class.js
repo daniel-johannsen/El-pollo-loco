@@ -29,13 +29,13 @@ class Character extends MovableObject {
     ];
 
     IMAGES_DEAD = [
-        'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-51.png',
-        'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-52.png',
-        'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-53.png',
-        'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-54.png',
-        'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-55.png',
-        'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-56.png',
-        'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.png'
+        './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-51.png',
+        './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-52.png',
+        './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-53.png',
+        './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-54.png',
+        './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-55.png',
+        './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-56.png',
+        './img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.png'
     ];
 
     world;
@@ -46,7 +46,7 @@ class Character extends MovableObject {
 
 
     constructor() {
-        super().loadImage('img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-21.png');
+        super().loadImage('./img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-21.png');
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_JUMPING);
         this.loadImages(this.IMAGES_HURTING);

@@ -6,13 +6,13 @@ class Chick extends MovableObject {
     chickenDead = false;
 
     IMAGES_WALKING = [
-        'img/3.Secuencias_Enemy_básico/Versión_pollito/1.Paso_derecho.png',
-        'img/3.Secuencias_Enemy_básico/Versión_pollito/2.Centro.png',
-        'img/3.Secuencias_Enemy_básico/Versión_pollito/3.Paso_izquierdo.png'
+        './img/3.Secuencias_Enemy_básico/Versión_pollito/1.Paso_derecho.png',
+        './img/3.Secuencias_Enemy_básico/Versión_pollito/2.Centro.png',
+        './img/3.Secuencias_Enemy_básico/Versión_pollito/3.Paso_izquierdo.png'
     ];
 
     IMAGES_DEAD = [
-        'img/3.Secuencias_Enemy_básico/Versión_pollito/4.Muerte.png'
+        './img/3.Secuencias_Enemy_básico/Versión_pollito/4.Muerte.png'
     ];
 
     constructor() {
