@@ -50,6 +50,7 @@ class World {
         }, 150);
         setInterval(() => {
             this.checkCollisionBottleAndEndboss();
+            this.checkCharacterIsNearToEndboss();
         }, 2800)
     }
 
@@ -61,11 +62,11 @@ class World {
         this.throwableObjects.forEach((bottle) => {
             this.level.endboss.forEach((endboss) => {
                 if (endboss.isColliding(bottle)) {
-                    console.log('Enemy hit!');
                     endboss.endbossHurt();
                     this.hitEndbossSound.play()
                 }
                 if (endboss.isDead()) {
+                    endboss.endbossDies();
                     setTimeout(() => {
                         this.level.endboss.splice(this.level.endboss.indexOf(endboss), 1);
                     }, 943);
@@ -165,6 +166,19 @@ class World {
             if (this.character.isColliding(endboss)) {
                 this.character.hit();
                 this.statusbarEnergy.setPercentage(this.character.energy);
+            }
+        });
+    }
+
+
+    /**
+     * This function is used to check if the charackter is near to the endboss.
+     */
+    checkCharacterIsNearToEndboss() {
+        this.level.endboss.forEach((endboss) => {
+            if (this.character.x > 1800) {
+                endboss.letEndbossWalk();
+                console.log('Contact with endboss')
             }
         });
     }
