@@ -41,6 +41,14 @@ class MovableObject extends DrawableObject {
 
 
     /**
+     * This function is used to set the energy of an enemy to 0.
+     */
+    kill() {
+        this.energy = 0;
+    }
+
+
+    /**
      * This function is used to return, that the character is hurt or not.
      */
     isHurt() {

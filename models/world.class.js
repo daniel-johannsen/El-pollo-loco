@@ -83,8 +83,7 @@ class World {
         this.throwableObjects.forEach((bottle) => {
             this.level.enemies.forEach((enemy) => {
                 if (enemy.isColliding(bottle)) {
-                    console.log('chicken dead, ', enemy.energy);
-                    enemy.hitChicken();
+                    enemy.kill();
                     this.hitChickenSound.play();
                 }
             });
@@ -142,15 +141,16 @@ class World {
 
     /**
      * This function is used to check if the charackter colides with an anemy and lower his energy and animate the hit.
+     * If the character jumpt on the enemy, the enemy will be killed. 
      */
     checkCollisionsWithEnemy() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
                 console.log('chicken dead');
-                enemy.hitChicken();
+                enemy.kill();
                 this.hitChickenSound.play();
             }
-            if (this.character.isColliding(enemy) && enemy.chickenDead == false) {
+            if (this.character.isColliding(enemy) && !enemy.isDead()) {
                 this.character.hit();
                 this.statusbarEnergy.setPercentage(this.character.energy);
             }
@@ -180,6 +180,9 @@ class World {
                 endboss.letEndbossWalk();
                 console.log('Contact with endboss')
             }
+            if (endboss.x < 0) {
+                this.character.characterDies();
+            }
         });
     }
 
@@ -196,11 +199,11 @@ class World {
         this.addToMap(this.statusbarBottles);
         this.addToMap(this.statusbarCoins);
         this.ctx.translate(this.camera_X, 0);
-        this.addToMap(this.character);
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.level.bottles);
         this.addObjectsToMap(this.level.coins);
+        this.addToMap(this.character);
         this.addObjectsToMap(this.level.endboss);
         this.addObjectsToMap(this.throwableObjects);
         this.ctx.translate(-this.camera_X, 0);

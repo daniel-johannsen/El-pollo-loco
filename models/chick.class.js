@@ -3,7 +3,6 @@ class Chick extends MovableObject {
     height = 60;
     y = 365;
     energy = 100;
-    chickenDead = false;
 
     IMAGES_WALKING = [
         './img/3.Secuencias_Enemy_básico/Versión_pollito/1.Paso_derecho.png',
@@ -26,15 +25,10 @@ class Chick extends MovableObject {
 
 
     /**
-     * This function is used to lower the chick energy, if it is hurt
+     * This function is used to lower the chicken energy, if it is hurt
      */
-    hitChicken() {
-        this.chickenDead = true;
-        this.energy -= 100;
-        if (this.energy < 0) {
-            this.energy = 0;
-        }
-        clearInterval(this.moveLeft);
+    kill() {
+        super.kill();
     }
 
 
